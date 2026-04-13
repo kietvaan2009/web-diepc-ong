@@ -16,7 +16,6 @@ body{
     color:white;
 }
 
-/* GRID */
 .container{
     width:90%;
     margin:40px auto;
@@ -25,13 +24,11 @@ body{
     gap:25px;
 }
 
-/* CARD */
 .card{
     border-radius:20px;
     overflow:hidden;
     cursor:pointer;
     transition:0.4s;
-    backdrop-filter:blur(10px);
     background:rgba(255,255,255,0.08);
 }
 
@@ -50,7 +47,7 @@ body{
     padding:15px;
 }
 
-/* POPUP XỊN */
+/* popup */
 .modal{
     display:none;
     position:fixed;
@@ -67,7 +64,6 @@ body{
     max-width:700px;
     border-radius:20px;
     overflow:hidden;
-    animation:zoom 0.3s ease;
 }
 
 .modal-box img{
@@ -80,26 +76,12 @@ body{
     padding:20px;
 }
 
-.modal-content h2{
-    margin-bottom:10px;
-}
-
-.modal-content p{
-    line-height:1.7;
-    color:#ddd;
-}
-
 .close{
     position:absolute;
     top:20px;
     right:30px;
     font-size:25px;
     cursor:pointer;
-}
-
-@keyframes zoom{
-    from{transform:scale(0.8);opacity:0;}
-    to{transform:scale(1);opacity:1;}
 }
 </style>
 </head>
@@ -111,17 +93,17 @@ body{
 <div class="container">
 
 <div class="card" onclick="openModal('intro')">
-<img src="https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg">
+<img src="https://i.postimg.cc/k5j7p0Lr/0f935e8d-0820-4125-963c-85ba38a1a206.jpg">
 <h3>Giới thiệu</h3>
 </div>
 
 <div class="card" onclick="openModal('hobby')">
-<img src="https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg">
+<img src="https://i.postimg.cc/zXm86S2g/8c2e7d5b-e36e-423b-83a2-ba72940ba325.jpg">
 <h3>Sở thích</h3>
 </div>
 
 <div class="card" onclick="openModal('dream')">
-<img src="https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg">
+<img src="https://i.postimg.cc/d1Sg2vpd/64fa8243-1c66-4514-81b0-48e93417ba35.jpg">
 <h3>Ước mơ</h3>
 </div>
 
@@ -136,13 +118,13 @@ body{
 </div>
 
 <div class="card" onclick="openModal('religion')">
-<img src="https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg">
+<img src="https://i.postimg.cc/HkZKDTsC/d0a5f4f6-9e93-46ec-80c6-7a12ee3fd1d7.jpg">
 <h3>Công giáo</h3>
 </div>
 
 </div>
 
-<!-- MODAL -->
+<!-- modal -->
 <div id="modal" class="modal" onclick="closeModal()">
 <span class="close" onclick="closeModal()">✖</span>
 
@@ -162,49 +144,32 @@ let data = {
 intro:{
 img:"https://i.postimg.cc/k5j7p0Lr/0f935e8d-0820-4125-963c-85ba38a1a206.jpg",
 title:"Giới thiệu",
-text:`Mình là Chu Diệp, hiện đang là học sinh cuối cấp. Đây là giai đoạn quan trọng trong cuộc đời học sinh nên mình luôn cố gắng từng ngày để đạt được kết quả tốt nhất trong kỳ thi tốt nghiệp. 
-
-Mình tin rằng mỗi sự nỗ lực nhỏ hôm nay sẽ tạo nên thành công lớn trong tương lai. Vì vậy, dù có khó khăn mình vẫn luôn cố gắng không bỏ cuộc và tiếp tục tiến về phía trước.`
+text:"Mình là Chu Diệp..."
 },
-
 hobby:{
 img:"https://i.postimg.cc/zXm86S2g/8c2e7d5b-e36e-423b-83a2-ba72940ba325.jpg",
 title:"Sở thích",
-text:`Mình rất thích nghe nhạc vì nó giúp mình thư giãn sau những giờ học căng thẳng. Ngoài ra, mình còn thích khám phá những địa điểm đẹp trên khắp đất nước Việt Nam.
-
-Đối với mình, mỗi chuyến đi không chỉ là để ngắm cảnh mà còn là cơ hội để học hỏi, trải nghiệm và hiểu thêm về cuộc sống xung quanh.`
+text:"Mình thích nghe nhạc..."
 },
-
 dream:{
 img:"https://i.postimg.cc/d1Sg2vpd/64fa8243-1c66-4514-81b0-48e93417ba35.jpg",
 title:"Ước mơ",
-text:`Ước mơ của mình là theo học ngành du lịch và lữ hành. Mình mong muốn được đặt chân đến nhiều vùng đất khác nhau, khám phá những nền văn hoá mới và mở rộng hiểu biết của bản thân.
-
-Đối với mình, việc được đi và trải nghiệm chính là cách tuyệt vời nhất để trưởng thành và phát triển.`
+text:"Mình muốn theo ngành du lịch..."
 },
-
 family:{
-img:"https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg",
+img:"https://i.postimg.cc/jwwD5xNb/IMG-20260413-WA0000.jpg",
 title:"Gia đình",
-text:`Gia đình mình gồm 5 thành viên và ai cũng rất thân thiện, hoà đồng. Bố mẹ mình tuy làm công nhân nhưng luôn lạc quan và hết lòng vì gia đình.
-
-Anh trai mình hiện đang học đại học và em nhỏ thì khá nhút nhát, nhưng tất cả mọi người luôn yêu thương và quan tâm lẫn nhau. Gia đình chính là động lực lớn nhất giúp mình cố gắng mỗi ngày.`
+text:"Gia đình mình gồm 5 người..."
 },
-
 friend:{
-img:"https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg",
+img:"https://i.postimg.cc/LJx53Y3K/IMG-20260413-WA0001.jpg",
 title:"Bạn bè",
-text:`Nhóm bạn của mình tuy không cùng tuổi nhưng luôn tôn trọng và giúp đỡ nhau. Mỗi khi có ai gặp khó khăn thì mọi người đều sẵn sàng hỗ trợ mà không tính toán.
-
-Chính sự chân thành đó đã giúp tình bạn của chúng mình trở nên bền chặt và đáng quý hơn bao giờ hết.`
+text:"Bạn bè luôn giúp đỡ nhau..."
 },
-
 religion:{
-img:"https://i.postimg.cc/HkZKDTsC/d0a5f4f6-9e93-46ec-80c6-7a12ee3fd1d7-(1).jpg",
+img:"https://i.postimg.cc/HkZKDTsC/d0a5f4f6-9e93-46ec-80c6-7a12ee3fd1d7.jpg",
 title:"Công giáo",
-text:`Mình là người Công giáo và luôn coi đức tin là một phần quan trọng trong cuộc sống. Mình cố gắng sống tích cực, yêu thương và tôn trọng mọi người xung quanh.
-
-Dù có những lời không hay, mình tin rằng hành động và cách sống của bản thân sẽ là minh chứng rõ ràng nhất cho con người mình.`
+text:"Mình là người Công giáo..."
 }
 };
 
