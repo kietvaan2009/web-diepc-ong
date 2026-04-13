@@ -5,79 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chu Diệp</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body {
-    font-family: Arial;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
     color: white;
     text-align: center;
+    overflow-x: hidden;
 }
 
-h1 { margin: 30px 0; }
+/* background animation */
+body::before {
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background: radial-gradient(circle, rgba(0,255,255,0.1), transparent);
+    animation: moveBg 10s linear infinite;
+    z-index:-1;
+}
 
-/* GRID AUTO XỊN */
+@keyframes moveBg {
+    0% {transform:translate(0,0);}
+    50% {transform:translate(-25%,-25%);}
+    100% {transform:translate(0,0);}
+}
+
+h1 {
+    margin: 30px 0;
+    font-size: 32px;
+    animation: fadeDown 1s ease;
+}
+
+/* GRID */
 .container {
     width: 90%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
 }
 
 /* CARD */
 .card {
-    background: rgba(255,255,255,0.06);
-    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: 0.4s;
+    backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
+    animation: fadeUp 1s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 0 25px rgba(0,255,255,0.4);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 30px rgba(0,255,255,0.5);
 }
 
-/* ẢNH KHÔNG MÉO */
+/* image */
 .card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
 }
 
+/* text */
 .card p {
-    padding: 12px;
-    font-weight: bold;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 16px;
 }
 
-/* POPUP */
+/* popup */
 .modal {
     display: none;
     position: fixed;
     top:0;left:0;
     width:100%;height:100%;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
     background: #1e1e1e;
-    padding: 25px;
-    border-radius: 15px;
+    padding: 30px;
+    border-radius: 20px;
     width: 85%;
-    max-width: 550px;
+    max-width: 600px;
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.7;
+    animation: zoom 0.3s ease;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.8); opacity:0;}
+    to {transform: scale(1); opacity:1;}
 }
 
 .close {
     float:right;
     cursor:pointer;
-    font-size:20px;
+    font-size:22px;
+}
+
+/* animation */
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(40px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeDown {
+    from {opacity:0; transform:translateY(-40px);}
+    to {opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
@@ -120,7 +165,6 @@ h1 { margin: 30px 0; }
 
 </div>
 
-<!-- POPUP -->
 <div id="modal" class="modal" onclick="closeModal()">
 <div class="modal-content" onclick="event.stopPropagation()">
 <span class="close" onclick="closeModal()">✖</span>
@@ -133,22 +177,22 @@ function openModal(type){
 let text="";
 
 if(type=="intro"){
-text=`Mình là Chu Diệp, hiện là học sinh cuối cấp. Đây là giai đoạn quan trọng nên mình đang nỗ lực từng ngày để đạt kết quả tốt nhất trong kỳ thi tốt nghiệp. Mình luôn tin rằng chỉ cần cố gắng thì mọi ước mơ đều có thể trở thành hiện thực.`;
+text="Mình là Chu Diệp, học sinh cuối cấp, đang cố gắng từng ngày để đạt được mục tiêu của mình.";
 }
 else if(type=="hobby"){
-text=`Mình thích nghe nhạc và khám phá những điều đẹp đẽ xung quanh. Việc đi đến những nơi mới giúp mình mở rộng góc nhìn và tạo thêm nhiều kỷ niệm đáng nhớ.`;
+text="Mình thích nghe nhạc và khám phá những vẻ đẹp của Việt Nam.";
 }
 else if(type=="dream"){
-text=`Ước mơ của mình là theo học ngành du lịch và lữ hành. Mình muốn được đi nhiều nơi, trải nghiệm nhiều nền văn hoá và khám phá thế giới rộng lớn ngoài kia.`;
+text="Mình muốn theo ngành du lịch để đi nhiều nơi và trải nghiệm cuộc sống.";
 }
 else if(type=="family"){
-text=`Gia đình mình gồm 5 người, ai cũng thân thiện và luôn yêu thương nhau. Bố mẹ làm công nhân nhưng luôn lạc quan. Anh trai đang học đại học và em nhỏ khá nhút nhát nhưng rất dễ thương.`;
+text="Gia đình mình gồm 5 người, luôn yêu thương và ủng hộ nhau.";
 }
 else if(type=="friend"){
-text=`Nhóm bạn của mình tuy không cùng tuổi nhưng luôn tôn trọng và giúp đỡ nhau. Mỗi khi có ai gặp khó khăn, mọi người đều sẵn sàng hỗ trợ mà không so đo.`;
+text="Bạn bè luôn giúp đỡ nhau và sống rất chân thành.";
 }
 else if(type=="religion"){
-text=`Mình là người Công giáo. Mình luôn cố gắng sống tích cực, yêu thương và tôn trọng mọi người. Dù có những lời không hay, mình chọn cách chứng minh bằng hành động thay vì tranh cãi.`;
+text="Mình là người Công giáo, luôn sống tích cực và tôn trọng mọi người.";
 }
 
 document.getElementById("text").innerText=text;
