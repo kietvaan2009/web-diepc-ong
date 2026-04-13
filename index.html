@@ -6,60 +6,78 @@
 <title>Chu Diệp</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-
-* {margin:0;padding:0;box-sizing:border-box;}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: Arial;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
     color: white;
     text-align: center;
 }
 
-h1 {
-    margin: 30px 0;
-    font-size: 32px;
-}
+h1 { margin: 30px 0; }
 
-.container {width: 90%;margin: auto;}
-
-.row {
-    display: flex;
-    justify-content: center;
+/* GRID AUTO XỊN */
+.container {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
 }
 
+/* CARD */
 .card {
-    width: 260px;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.06);
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 15px;
-    transition: 0.4s;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 0 25px rgba(0,255,255,0.3);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 0 25px rgba(0,255,255,0.4);
 }
 
+/* ẢNH KHÔNG MÉO */
 .card img {
     width: 100%;
-    border-radius: 12px;
+    height: 180px;
+    object-fit: cover;
 }
 
-.title {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: 600;
+.card p {
+    padding: 12px;
+    font-weight: bold;
 }
 
-.desc {
-    font-size: 14px;
-    color: #ccc;
+/* POPUP */
+.modal {
+    display: none;
+    position: fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 15px;
+    width: 85%;
+    max-width: 550px;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.close {
+    float:right;
+    cursor:pointer;
+    font-size:20px;
 }
 </style>
 </head>
@@ -70,41 +88,77 @@ h1 {
 
 <div class="container">
 
-<div class="row">
-<div class="card">
-<img src="https://via.placeholder.com/300">
-<div class="title">Giới thiệu</div>
-<div class="desc">Học sinh cuối cấp, đang cố gắng từng ngày.</div>
+<div class="card" onclick="openModal('intro')">
+<img src="https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg">
+<p>Giới thiệu</p>
 </div>
 
-<div class="card">
-<img src="https://via.placeholder.com/300">
-<div class="title">Sở thích</div>
-<div class="desc">Nghe nhạc và khám phá Việt Nam.</div>
+<div class="card" onclick="openModal('hobby')">
+<img src="https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg">
+<p>Sở thích</p>
 </div>
 
-<div class="card">
-<img src="https://via.placeholder.com/300">
-<div class="title">Ước mơ</div>
-<div class="desc">Học du lịch để đi nhiều nơi.</div>
-</div>
+<div class="card" onclick="openModal('dream')">
+<img src="https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg">
+<p>Ước mơ</p>
 </div>
 
-<div class="row">
-<div class="card">
-<img src="https://via.placeholder.com/300">
-<div class="title">Gia đình</div>
-<div class="desc">Gia đình 5 người luôn yêu thương nhau.</div>
+<div class="card" onclick="openModal('family')">
+<img src="https://i.postimg.cc/jwwD5xNb/IMG-20260413-WA0000.jpg">
+<p>Gia đình</p>
 </div>
 
-<div class="card">
-<img src="https://via.placeholder.com/300">
-<div class="title">Bạn bè</div>
-<div class="desc">Bạn bè thân thiết và luôn giúp đỡ nhau.</div>
+<div class="card" onclick="openModal('friend')">
+<img src="https://i.postimg.cc/LJx53Y3K/IMG-20260413-WA0001.jpg">
+<p>Bạn bè</p>
 </div>
+
+<div class="card" onclick="openModal('religion')">
+<img src="https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg">
+<p>Công giáo</p>
 </div>
 
 </div>
+
+<!-- POPUP -->
+<div id="modal" class="modal" onclick="closeModal()">
+<div class="modal-content" onclick="event.stopPropagation()">
+<span class="close" onclick="closeModal()">✖</span>
+<p id="text"></p>
+</div>
+</div>
+
+<script>
+function openModal(type){
+let text="";
+
+if(type=="intro"){
+text=`Mình là Chu Diệp, hiện là học sinh cuối cấp. Đây là giai đoạn quan trọng nên mình đang nỗ lực từng ngày để đạt kết quả tốt nhất trong kỳ thi tốt nghiệp. Mình luôn tin rằng chỉ cần cố gắng thì mọi ước mơ đều có thể trở thành hiện thực.`;
+}
+else if(type=="hobby"){
+text=`Mình thích nghe nhạc và khám phá những điều đẹp đẽ xung quanh. Việc đi đến những nơi mới giúp mình mở rộng góc nhìn và tạo thêm nhiều kỷ niệm đáng nhớ.`;
+}
+else if(type=="dream"){
+text=`Ước mơ của mình là theo học ngành du lịch và lữ hành. Mình muốn được đi nhiều nơi, trải nghiệm nhiều nền văn hoá và khám phá thế giới rộng lớn ngoài kia.`;
+}
+else if(type=="family"){
+text=`Gia đình mình gồm 5 người, ai cũng thân thiện và luôn yêu thương nhau. Bố mẹ làm công nhân nhưng luôn lạc quan. Anh trai đang học đại học và em nhỏ khá nhút nhát nhưng rất dễ thương.`;
+}
+else if(type=="friend"){
+text=`Nhóm bạn của mình tuy không cùng tuổi nhưng luôn tôn trọng và giúp đỡ nhau. Mỗi khi có ai gặp khó khăn, mọi người đều sẵn sàng hỗ trợ mà không so đo.`;
+}
+else if(type=="religion"){
+text=`Mình là người Công giáo. Mình luôn cố gắng sống tích cực, yêu thương và tôn trọng mọi người. Dù có những lời không hay, mình chọn cách chứng minh bằng hành động thay vì tranh cãi.`;
+}
+
+document.getElementById("text").innerText=text;
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+</script>
 
 </body>
 </html>
