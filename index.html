@@ -10,192 +10,207 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-    font-family: 'Poppins', sans-serif;
+body{
+    font-family:'Poppins',sans-serif;
     background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
-}
-
-/* background animation */
-body::before {
-    content:"";
-    position:fixed;
-    width:200%;
-    height:200%;
-    background: radial-gradient(circle, rgba(0,255,255,0.1), transparent);
-    animation: moveBg 10s linear infinite;
-    z-index:-1;
-}
-
-@keyframes moveBg {
-    0% {transform:translate(0,0);}
-    50% {transform:translate(-25%,-25%);}
-    100% {transform:translate(0,0);}
-}
-
-h1 {
-    margin: 30px 0;
-    font-size: 32px;
-    animation: fadeDown 1s ease;
+    color:white;
 }
 
 /* GRID */
-.container {
-    width: 90%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+.container{
+    width:90%;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
 }
 
 /* CARD */
-.card {
-    background: rgba(255,255,255,0.08);
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.4s;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.1);
-    animation: fadeUp 1s ease;
+.card{
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.4s;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.08);
 }
 
-.card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 0 30px rgba(0,255,255,0.5);
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+    box-shadow:0 0 30px rgba(0,255,255,0.5);
 }
 
-/* image */
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
 }
 
-/* text */
-.card p {
-    padding: 15px;
-    font-weight: 600;
-    font-size: 16px;
+.card h3{
+    padding:15px;
 }
 
-/* popup */
-.modal {
-    display: none;
-    position: fixed;
+/* POPUP XỊN */
+.modal{
+    display:none;
+    position:fixed;
     top:0;left:0;
     width:100%;height:100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
+    background:rgba(0,0,0,0.8);
+    justify-content:center;
+    align-items:center;
 }
 
-.modal-content {
-    background: #1e1e1e;
-    padding: 30px;
-    border-radius: 20px;
-    width: 85%;
-    max-width: 600px;
-    text-align: left;
-    line-height: 1.7;
-    animation: zoom 0.3s ease;
+.modal-box{
+    background:#1e1e1e;
+    width:90%;
+    max-width:700px;
+    border-radius:20px;
+    overflow:hidden;
+    animation:zoom 0.3s ease;
 }
 
-@keyframes zoom {
-    from {transform: scale(0.8); opacity:0;}
-    to {transform: scale(1); opacity:1;}
+.modal-box img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
 }
 
-.close {
-    float:right;
+.modal-content{
+    padding:20px;
+}
+
+.modal-content h2{
+    margin-bottom:10px;
+}
+
+.modal-content p{
+    line-height:1.7;
+    color:#ddd;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:25px;
     cursor:pointer;
-    font-size:22px;
 }
 
-/* animation */
-@keyframes fadeUp {
-    from {opacity:0; transform:translateY(40px);}
-    to {opacity:1; transform:translateY(0);}
-}
-
-@keyframes fadeDown {
-    from {opacity:0; transform:translateY(-40px);}
-    to {opacity:1; transform:translateY(0);}
+@keyframes zoom{
+    from{transform:scale(0.8);opacity:0;}
+    to{transform:scale(1);opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<h1>✨ Chu Diệp ✨</h1>
+<h1 style="text-align:center;margin-top:20px;">✨ Chu Diệp ✨</h1>
 
 <div class="container">
 
 <div class="card" onclick="openModal('intro')">
 <img src="https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg">
-<p>Giới thiệu</p>
+<h3>Giới thiệu</h3>
 </div>
 
 <div class="card" onclick="openModal('hobby')">
 <img src="https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg">
-<p>Sở thích</p>
+<h3>Sở thích</h3>
 </div>
 
 <div class="card" onclick="openModal('dream')">
 <img src="https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg">
-<p>Ước mơ</p>
+<h3>Ước mơ</h3>
 </div>
 
 <div class="card" onclick="openModal('family')">
 <img src="https://i.postimg.cc/jwwD5xNb/IMG-20260413-WA0000.jpg">
-<p>Gia đình</p>
+<h3>Gia đình</h3>
 </div>
 
 <div class="card" onclick="openModal('friend')">
 <img src="https://i.postimg.cc/LJx53Y3K/IMG-20260413-WA0001.jpg">
-<p>Bạn bè</p>
+<h3>Bạn bè</h3>
 </div>
 
 <div class="card" onclick="openModal('religion')">
 <img src="https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg">
-<p>Công giáo</p>
+<h3>Công giáo</h3>
 </div>
 
 </div>
 
+<!-- MODAL -->
 <div id="modal" class="modal" onclick="closeModal()">
-<div class="modal-content" onclick="event.stopPropagation()">
 <span class="close" onclick="closeModal()">✖</span>
-<p id="text"></p>
+
+<div class="modal-box" onclick="event.stopPropagation()">
+<img id="modalImg">
+<div class="modal-content">
+<h2 id="modalTitle"></h2>
+<p id="modalText"></p>
+</div>
 </div>
 </div>
 
 <script>
 function openModal(type){
-let text="";
 
-if(type=="intro"){
-text="Mình là Chu Diệp, học sinh cuối cấp, đang cố gắng từng ngày để đạt được mục tiêu của mình.";
-}
-else if(type=="hobby"){
-text="Mình thích nghe nhạc và khám phá những vẻ đẹp của Việt Nam.";
-}
-else if(type=="dream"){
-text="Mình muốn theo ngành du lịch để đi nhiều nơi và trải nghiệm cuộc sống.";
-}
-else if(type=="family"){
-text="Gia đình mình gồm 5 người, luôn yêu thương và ủng hộ nhau.";
-}
-else if(type=="friend"){
-text="Bạn bè luôn giúp đỡ nhau và sống rất chân thành.";
-}
-else if(type=="religion"){
-text="Mình là người Công giáo, luôn sống tích cực và tôn trọng mọi người.";
-}
+let data = {
+intro:{
+img:"https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg",
+title:"Giới thiệu",
+text:`Mình là Chu Diệp, hiện đang là học sinh cuối cấp. Đây là giai đoạn quan trọng trong cuộc đời học sinh nên mình luôn cố gắng từng ngày để đạt được kết quả tốt nhất trong kỳ thi tốt nghiệp. 
 
-document.getElementById("text").innerText=text;
+Mình tin rằng mỗi sự nỗ lực nhỏ hôm nay sẽ tạo nên thành công lớn trong tương lai. Vì vậy, dù có khó khăn mình vẫn luôn cố gắng không bỏ cuộc và tiếp tục tiến về phía trước.`
+},
+
+hobby:{
+img:"https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg",
+title:"Sở thích",
+text:`Mình rất thích nghe nhạc vì nó giúp mình thư giãn sau những giờ học căng thẳng. Ngoài ra, mình còn thích khám phá những địa điểm đẹp trên khắp đất nước Việt Nam.
+
+Đối với mình, mỗi chuyến đi không chỉ là để ngắm cảnh mà còn là cơ hội để học hỏi, trải nghiệm và hiểu thêm về cuộc sống xung quanh.`
+},
+
+dream:{
+img:"https://i.postimg.cc/zBpKx3GV/f7865717-421a-44a9-91ca-41b0358d2998.jpg",
+title:"Ước mơ",
+text:`Ước mơ của mình là theo học ngành du lịch và lữ hành. Mình mong muốn được đặt chân đến nhiều vùng đất khác nhau, khám phá những nền văn hoá mới và mở rộng hiểu biết của bản thân.
+
+Đối với mình, việc được đi và trải nghiệm chính là cách tuyệt vời nhất để trưởng thành và phát triển.`
+},
+
+family:{
+img:"https://i.postimg.cc/jwwD5xNb/IMG-20260413-WA0000.jpg",
+title:"Gia đình",
+text:`Gia đình mình gồm 5 thành viên và ai cũng rất thân thiện, hoà đồng. Bố mẹ mình tuy làm công nhân nhưng luôn lạc quan và hết lòng vì gia đình.
+
+Anh trai mình hiện đang học đại học và em nhỏ thì khá nhút nhát, nhưng tất cả mọi người luôn yêu thương và quan tâm lẫn nhau. Gia đình chính là động lực lớn nhất giúp mình cố gắng mỗi ngày.`
+},
+
+friend:{
+img:"https://i.postimg.cc/LJx53Y3K/IMG-20260413-WA0001.jpg",
+title:"Bạn bè",
+text:`Nhóm bạn của mình tuy không cùng tuổi nhưng luôn tôn trọng và giúp đỡ nhau. Mỗi khi có ai gặp khó khăn thì mọi người đều sẵn sàng hỗ trợ mà không tính toán.
+
+Chính sự chân thành đó đã giúp tình bạn của chúng mình trở nên bền chặt và đáng quý hơn bao giờ hết.`
+},
+
+religion:{
+img:"https://i.postimg.cc/cJS3ZfKH/d4685c9c-d67e-4bef-9abc-1342b089488e.jpg",
+title:"Công giáo",
+text:`Mình là người Công giáo và luôn coi đức tin là một phần quan trọng trong cuộc sống. Mình cố gắng sống tích cực, yêu thương và tôn trọng mọi người xung quanh.
+
+Dù có những lời không hay, mình tin rằng hành động và cách sống của bản thân sẽ là minh chứng rõ ràng nhất cho con người mình.`
+}
+};
+
+document.getElementById("modalImg").src=data[type].img;
+document.getElementById("modalTitle").innerText=data[type].title;
+document.getElementById("modalText").innerText=data[type].text;
 document.getElementById("modal").style.display="flex";
 }
 
